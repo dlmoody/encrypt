@@ -36,8 +36,10 @@ class Encryptor
         decrypted.join
     end
     
-    def encrypt_file(in_path, out_path)
+    def encrypt_file(in_path)
+        
         if(File.exists?(in_path))
+            out_path = in_path + ".encrypted"
             in_file = File.open(in_path, "r")
             in_message = in_file.read
             in_file.close
