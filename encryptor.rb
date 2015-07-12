@@ -36,6 +36,20 @@ class Encryptor
         decrypted.join
     end
     
+    def encrypt_file(in_path, out_path)
+        if(File.exists?(in_path))
+            in_file = File.open(in_path, "r")
+            in_message = in_file.read
+            in_file.close
+            out_message = encrypt(in_message)
+            out_file = File.open(out_path, "w")
+            out_file.write(out_message)    
+            out_file.close
+        else
+            puts "The file #{in_path} does not exist"
+        end
+        
+    end
     
     
     def pointer
